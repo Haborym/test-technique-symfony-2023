@@ -1,28 +1,23 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
-    {% if error %}
-        <div>{{ error.messageKey|trans(error.messageData, 'security') }}</div>
-    {% endif %}
-
     <div class="example-wrapper">
-        <form action="{{ path('app_login') }}" method="post">
-            <label for="username">Email:</label>
-            <input type="text" id="username" name="_username" value="{{ last_username }}">
+        <h1>Inscription</h1>
+        {{ form_errors(registrationForm) }}
 
-            <label for="password">Password:</label>
-            <input type="password" id="password" name="_password">
+        {{ form_start(registrationForm) }}
+            {{ form_row(registrationForm.email) }}
+            {{ form_row(registrationForm.phone) }}
+            {{ form_row(registrationForm.plainPassword, {
+                label: 'Password'
+            }) }}
 
-            <input type="hidden" name="_csrf_token" value="{{ csrf_token('authenticate') }}">
-
-            <input type="hidden" name="_target_path" value="/">
-
-            <button type="submit">login</button>
-        </form>
+            <button type="submit" class="btn">Register</button>
+        {{ form_end(registrationForm) }}
 
         <div>
             <ul>
-                <li><a href="/sign-in">Je n'ai pas de compte</a></li>
+                <li><a href="/sign-in">J'ai déjà un compte</a></li>
                 <li><a href="/">Retour à l'accueil</a></li>
             </ul>
         </div>
