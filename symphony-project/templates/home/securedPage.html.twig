@@ -1,6 +1,6 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Hello HomeController!{% endblock %}
+{% block title %}Hello!{% endblock %}
 
 {% block body %}
 <style>
@@ -10,8 +10,9 @@
 
 <div class="example-wrapper">
     <h1>Vous êtes sur la page sécurisée</h1>
-    <h2>Vous êtes connecté en tant que user</h2>
+    <h2>Vous êtes connecté en tant que {{ app.user.email }}</h2>
+    <h2>Votre numéro de téléphone est le suivant : {{ app.user.phone }}</h2>
 
-    <h3><a href="/">Retour à l'accueil</a></h3>
+    <h3><a href={{ path('app_home') }}>Retour à l'accueil</a></h3>
 </div>
 {% endblock %}
