@@ -1,0 +1,22 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello HomeController!{% endblock %}
+
+{% block body %}
+
+<div class="example-wrapper">
+    <h1>Bienvenue {% if app.user.email is defined and app.user.email is not null %}{{ app.user.email }}{% endif %}</h1>
+
+    <ul>
+       {% if app.user.email is not defined %}
+       <li>Vous pouvez aller sur la page d'inscription <a class="example-wrapper code" href={{ path('app_register') }}>ici</a></li>
+       <li>Si vous possédez déjà un compte vous pouvez vous connecter <a class="example-wrapper code" href={{ path('app_login') }}>ici</a></li>
+       {% endif %}
+       <li>Vous pouvez accéder à la page sécurisée si vous êtes connectés <a class="example-wrapper code" href={{ path('app_secure') }}>ici</a></li>
+       {% if app.user.email is defined and app.user.email is not null %}
+       <li>Déconnexion <a class="example-wrapper code" href={{ path('app_logout') }}>ici</a></li>
+       {% endif %}
+    </ul>
+</div>
+
+{% endblock %}

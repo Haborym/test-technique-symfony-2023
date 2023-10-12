@@ -1,0 +1,26 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <div class="example-wrapper">
+        <h1>Inscription</h1>
+        {{ form_errors(registrationForm) }}
+
+        {{ form_start(registrationForm) }}
+            {{ form_row(registrationForm.email) }}
+            {{ form_row(registrationForm.phone) }}
+            {{ form_row(registrationForm.plainPassword, {
+                label: 'Password'
+            }) }}
+
+            <button type="submit" class="btn">Register</button>
+        {{ form_end(registrationForm) }}
+
+        <div>
+            <ul>
+                <li><a href={{ path('app_login') }}>J'ai déjà un compte</a></li>
+                <li><a href={{ path('app_home') }}>Retour à l'accueil</a></li>
+            </ul>
+        </div>
+    </div>
+{% endblock %}
+
